@@ -5,3 +5,19 @@
 @{ 
     // TODO #3 - Use the same list display from Views/Search/Index.cshtml 
 }
+@foreach (var job in ViewBag.jobs)
+{
+    <hr>
+    <table class="job-listing">
+        @foreach (var q in job)
+        {
+            <tr>
+                <th>@char.ToUpper(q.Key[0])@q.Key.Substring(1)</th>
+                <td>@q.Value</td>
+            </tr>
+        }
+    </table>
+}
+
+
+  

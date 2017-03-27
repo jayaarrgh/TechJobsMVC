@@ -10,8 +10,8 @@
                 <input type="radio"
                        name="searchType"
                        id="@column.Key"
-                       value="@column.Key" 
-                       checked="@column.Key == 'all''"/>
+                       value="@column.Key"
+                       checked="@column.Key == 'all''" />
                 <label for="@column.Key">@column.Value</label>
             </span>
         }
@@ -19,7 +19,7 @@
 
     <p>
         <label for="searchTerm">Keyword:</label>
-        <input type="text" name="searchTerm" id="searchTerm" />
+        <input type="text" name="searchTerm" id="searchTerm"/>
     </p>
 
     <input type="submit" value="Search" />
@@ -32,5 +32,23 @@
 
     <h3>@ViewBag.jobs.Count Result(s)</h3>
 
-    // TODO #2 - Loop over jobs dictionary and display all job fields 
+    // TODO #2 - Loop over jobs dictionary and display all job fields
+    
+
+    @foreach (var job in ViewBag.jobs)
+    {
+        <hr>
+        <table class="job-listing">
+            @foreach (var q in job)
+            {
+                <tr>
+                    <th>@char.ToUpper(q.Key[0])@q.Key.Substring(1)</th>
+                    <td>@q.Value</td>
+                </tr>
+            }
+        </table>
+    }
 }
+
+
+        @*<a asp-controller="List" asp-action="Values" asp-route-column="@column.Key">@column.Value</a>*@
